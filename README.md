@@ -11,7 +11,7 @@ The search algorithm uses a vector-space model with tf-idf weighting to determin
 
 Optionally, search results can be altered by checking the "Use PageRank Boost" box. This will allow the search engine to consider the PageRank scores of results, potentially boosting some pages higher in the list as a result. This is based on Google's [PageRank algorithm](https://en.wikipedia.org/wiki/PageRank), which assigns higher scores to pages that have more incoming hyperlinks.
 
-###
+### Licensing Notice
 JavaSandcrawler  Copyright (C) 2022  Nic Watson
 
 Distributed under GPL v3.0 license. Please see LICENSE file.
