@@ -105,7 +105,7 @@ public class Crawler
 	 */
     public Crawler go(CrawlProgressResponder listener)
     {
-    	return go(0, listener);
+    	return go(10000, listener);
     }
     
 	/**
@@ -118,7 +118,7 @@ public class Crawler
 	 */
 	public Crawler go(int limit, CrawlProgressResponder listener)
 	{
-		// Keep track of what requests have failed and how mahy times
+		// Keep track of what requests have failed and how many times
 		Map<String, Integer> failures = new HashMap<String, Integer>();
 		int counter = 0;				// How many pages have we crawled?
 		unvisited.add(seedUrl);
