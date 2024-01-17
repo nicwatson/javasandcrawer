@@ -1,0 +1,84 @@
+package net.nicwatson.sandcrawler.common;
+
+import java.io.Serializable;
+
+/**
+ * Word stats are used to track the incidence of word/document relations in an index.
+ * This abstract class defines the characteristics that all word stats have in common --
+ * a String representing the word itself, and a reference to the WebIndex that contains it.
+ * @author Nic
+ *
+ */
+public class AbstractWordStat implements Serializable
+{
+	private static final long serialVersionUID = 3462089323970319944L;
+
+	/**
+	 * The word that this stat is for.
+	 */
+	private String word;
+	
+	/**
+	 * The WebIndex that "owns" this word stat
+	 */
+	private WebIndex index;
+	
+	/**
+	 * Default constructor ensures that null value of word doesn't crash hashCode() or equals() during deserialization
+	 */
+	protected AbstractWordStat()
+	{
+		this.word = "";
+		this.index = null;
+	}
+	
+	/**
+	 * Creates a new word stat with the specified word string and owner WebIndex
+	 * @param word The word that this stat is for
+	 * @param index The WebIndex that "owns" this word stat
+	 */
+	public AbstractWordStat(String word, WebIndex index)
+	{
+		this();
+		this.word = word;
+		this.index = index;
+	}
+	
+	/**
+	 * Getter for the <code>word</code> property
+	 * @return A new string initialized to the value of the <code>word</code> property
+	 */
+	public String getWord()
+	{
+		return new String(this.word);
+	}
+
+	/**
+	 * Getter for the <code>index</code> property
+	 * @return Reference to the <code>index</code> property -- the WebIndex that owns this word stat
+	 */
+	public WebIndex getIndex()
+	{
+		return this.index;
+	}
+	
+	/**
+	 * Calculates the hashcode for this word stat, which is the String hashcode of the underlying word
+	 * @return Hash code
+	 */
+	public int hashCode()
+	{
+		return this.word.hashCode();
+	}
+	
+	/**
+	 * Indicates whether two AbstractWordStats are equal.
+	 * @return <code>true</code> if the two candidates are AbstractWordStats with the same underlying word strings
+	 */
+	public boolean equals(Object other)
+	{
+		return other instanceof AbstractWordStat && this.getWord().equals(((AbstractWordStat)other).getWord());
+	}
+	
+
+}
